@@ -23,8 +23,7 @@ public abstract class RestAdaptor <input extends BaseRequest, output extends Bas
     protected String url;
     protected HttpMethod httpMethod;
     protected Class<output> response;
-
-    private RestTemplate restTemplateHttps;
+    protected RestTemplate restTemplate;
 
     protected ResponseEntity getResponse(EsbRequest request) {
         String requestUrl;
@@ -39,8 +38,8 @@ public abstract class RestAdaptor <input extends BaseRequest, output extends Bas
         log.info("requestUrl = {}", requestUrl);
         log.info("requestPayload = {}", JSON.toJSONString(request.getPayload()));
         ResponseEntity responseEntity = (request.getIsPlain()) ?
-                this.restTemplateHttps.exchange(requestUrl, httpMethod, request.getPayload(), String.class) :
-                this.restTemplateHttps.exchange(requestUrl, httpMethod, request.getPayload(), response);
+                this.restTemplate.exchange(requestUrl, httpMethod, request.getPayload(), String.class) :
+                this.restTemplate.exchange(requestUrl, httpMethod, request.getPayload(), response);
         log.info("response for {} = {}", url, responseEntity);
         return responseEntity;
     }
