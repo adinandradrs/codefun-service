@@ -1,66 +1,48 @@
 package id.codefun.service.util;
 
-import java.util.List;
+import java.time.Duration;
 import org.apache.commons.lang3.ObjectUtils;
-import org.apache.commons.lang3.StringUtils;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
-import io.lettuce.core.RedisClient;
-import io.lettuce.core.api.StatefulRedisConnection;
-import io.lettuce.core.api.sync.RedisCommands;
 
 @Component
 public class CacheUtility {
 
-    private RedisClient redisClient;
+    private RedisTemplate redisTemplate;
 
-    public CacheUtility(RedisClient redisClient){
-        this.redisClient = redisClient;
+    public CacheUtility(RedisTemplate redisTemplate){
+        this.redisTemplate = redisTemplate;
     }
 
     public void delete(String prefix, String key){
-        StatefulRedisConnection<String, String> connection = redisClient.connect();
-        RedisCommands<String, String> syncCommand = connection.sync();
         String pair = prefix + ":" + key;
-        syncCommand.del(pair);
-        connection.close();
+        redisTemplate.delete(pair);
     }
 
     public void delete(String prefix){
-        StatefulRedisConnection<String, String> connection = redisClient.connect();
-        RedisCommands<String, String> syncCommand = connection.sync();
         String pair = prefix + "*";
-        List<String> keys = syncCommand.keys(pair);
-        for (String key: keys) {
-            syncCommand.del(key);
-        }
-        connection.close();
+        redisTemplate.keys(pair).forEach(key->{
+            redisTemplate.delete(key);
+        });
     }
 
     public void set(String prefix, String key, String value, Integer expiration){
-        StatefulRedisConnection<String, String> connection = redisClient.connect();
-        RedisCommands<String, String> syncCommand = connection.sync();
         String pair = prefix + ":" + key;
-        String existingCache = syncCommand.get(pair);
-        if(StringUtils.isNotEmpty(existingCache)){
-            syncCommand.del(pair);
-        }
-        syncCommand.set(pair, value);
         if(ObjectUtils.isNotEmpty(expiration)){
-            syncCommand.expire(pair, expiration);
+            redisTemplate.opsForValue().set(pair, value, Duration.ofSeconds(expiration));
         }
-        connection.close();
+        else{
+            redisTemplate.opsForValue().set(pair, value);
+        }
     }
 
     public String get(String prefix, String key){
-        StatefulRedisConnection<String, String> connection = redisClient.connect();
-        RedisCommands<String, String> syncCommand = connection.sync();
         String pair = prefix + ":" + key;
-        String value = syncCommand.get(pair);
-        if(StringUtils.isEmpty(value)){
+        Object value = redisTemplate.opsForValue().get(pair);
+        if(ObjectUtils.isEmpty(value)){
             return null;
         }
-        connection.close();
-        return value;
+        return value.toString();
     }
     
 }
