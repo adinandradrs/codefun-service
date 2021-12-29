@@ -28,9 +28,10 @@
 		<commons-pool.version>2.11.1</commons-pool.version>
         <jjwt.version>0.9.1</jjwt.version>
         <codefun-common.version>1.0</codefun-common.version>
-		<jstl.version>1.2</jstl.version>
 		<spring-data-redis.version>2.3.8.RELEASE</spring-data-redis.version>
 		<spring-integration.version>5.1.8.RELEASE</spring-integration.version>
+		<sonar.organization>nandcep</sonar.organization>
+  		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
     
     <parent>
@@ -128,11 +129,6 @@
 			<groupId>id.codefun.common</groupId>
 			<artifactId>codefun-common</artifactId>
 			<version>${codefun-common.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-			<version>${jstl.version}</version>
 		</dependency>
     </dependencies>
 </project>
