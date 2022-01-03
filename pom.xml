@@ -32,6 +32,7 @@
 		<spring-integration.version>5.1.8.RELEASE</spring-integration.version>
 		<sonar.organization>nandcep</sonar.organization>
   		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		<spring-cloud.version>3.0.1</spring-cloud.version>
     </properties>
     
     <parent>
@@ -42,6 +43,11 @@
     </parent>
 
     <dependencies>
+		<dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bootstrap</artifactId>
+            <version>${spring-cloud.version}</version>
+        </dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-pool2</artifactId>
