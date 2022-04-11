@@ -1,6 +1,8 @@
 package id.codefun.service.util;
 
 import java.time.Duration;
+import java.util.Optional;
+
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
@@ -38,7 +40,7 @@ public class CacheUtility {
 
     public String get(String prefix, String key){
         String pair = prefix + ":" + key;
-        Object value = redisTemplate.opsForValue().get(pair);
+        Object value = Optional.ofNullable(redisTemplate.opsForValue()).orElseGet(null);
         if(ObjectUtils.isEmpty(value)){
             return null;
         }

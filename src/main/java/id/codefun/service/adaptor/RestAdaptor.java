@@ -18,14 +18,14 @@ import lombok.extern.log4j.Log4j2;
 @Setter
 @Getter
 @Log4j2
-public abstract class RestAdaptor <input extends BaseRequest, output extends BaseResponse> {
+public abstract class RestAdaptor <I extends BaseRequest, O extends BaseResponse> {
 
     protected String url;
     protected HttpMethod httpMethod;
-    protected Class<output> response;
+    protected Class<O> response;
     protected RestTemplate restTemplate;
 
-    protected ResponseEntity getResponse(EsbRequest request) {
+    protected ResponseEntity<?> getResponse(EsbRequest request) {
         String requestUrl;
         if (ObjectUtils.isNotEmpty(request.getParams()) && !request.getParams().isEmpty()) {
             LinkedMultiValueMap<String, String> params = request.getParams();
@@ -37,14 +37,14 @@ public abstract class RestAdaptor <input extends BaseRequest, output extends Bas
         }
         log.info("requestUrl = {}", requestUrl);
         log.info("requestPayload = {}", JSON.toJSONString(request.getPayload()));
-        ResponseEntity responseEntity = (request.getIsPlain()) ?
+        ResponseEntity<?> responseEntity = (request.getIsPlain()) ?
                 this.restTemplate.exchange(requestUrl, httpMethod, request.getPayload(), String.class) :
                 this.restTemplate.exchange(requestUrl, httpMethod, request.getPayload(), response);
         log.info("response for {} = {}", url, responseEntity);
         return responseEntity;
     }
 
-    public abstract output execute(input input);
-    protected abstract EsbRequest generatePayload(input input);
+    public abstract O execute(I input);
+    protected abstract EsbRequest generatePayload(I input);
     
 }
