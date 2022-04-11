@@ -29,11 +29,9 @@
         <commons-compress.version>1.21</commons-compress.version>
 		<commons-pool.version>2.11.1</commons-pool.version>
         <jjwt.version>0.9.1</jjwt.version>
-        <codefun-common.version>1.0</codefun-common.version>
+        <codefun-common.version>1.0-SNAPSHOT</codefun-common.version>
 		<spring-data-redis.version>2.3.8.RELEASE</spring-data-redis.version>
 		<spring-integration.version>5.1.8.RELEASE</spring-integration.version>
-		<sonar.organization>nandcep</sonar.organization>
-  		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		<spring-cloud.version>3.0.1</spring-cloud.version>
     </properties>
     
@@ -139,4 +137,14 @@
 			<version>${codefun-common.version}</version>
 		</dependency>
     </dependencies>
+
+	<repositories>
+		<repository>
+			<id>github</id>
+			<name>GitHub Code4Fun Apache Maven Packages</name>
+			<url>https://maven.pkg.github.com/adinandradrs/codefun-common</url>
+			<releases><enabled>true</enabled></releases>
+			<snapshots><enabled>true</enabled></snapshots>
+		</repository>
+	</repositories>
 </project>
