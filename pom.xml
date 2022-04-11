@@ -12,6 +12,8 @@
     <description>Codefun Service Library</description>
 
     <properties>
+		<sonar.organization>nandcep</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <java.version>11</java.version>
         <lombok.version>1.18.20</lombok.version>
         <spring.version>2.3.8.RELEASE</spring.version>
