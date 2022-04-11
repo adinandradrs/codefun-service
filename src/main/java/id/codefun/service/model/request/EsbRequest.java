@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class EsbRequest {
 
-    private HttpEntity payload;
+    private HttpEntity<?> payload;
     private Boolean isPlain;
     private LinkedMultiValueMap<String, String> params;
 

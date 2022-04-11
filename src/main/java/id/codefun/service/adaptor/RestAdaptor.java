@@ -25,7 +25,7 @@ public abstract class RestAdaptor <I extends BaseRequest, O extends BaseResponse
     protected Class<O> response;
     protected RestTemplate restTemplate;
 
-    protected ResponseEntity<O> getResponse(EsbRequest request) {
+    protected ResponseEntity<?> getResponse(EsbRequest request) {
         String requestUrl;
         if (ObjectUtils.isNotEmpty(request.getParams()) && !request.getParams().isEmpty()) {
             LinkedMultiValueMap<String, String> params = request.getParams();
@@ -37,7 +37,7 @@ public abstract class RestAdaptor <I extends BaseRequest, O extends BaseResponse
         }
         log.info("requestUrl = {}", requestUrl);
         log.info("requestPayload = {}", JSON.toJSONString(request.getPayload()));
-        ResponseEntity responseEntity = (request.getIsPlain()) ?
+        ResponseEntity<?> responseEntity = request.getIsPlain() ?
                 this.restTemplate.exchange(requestUrl, httpMethod, request.getPayload(), String.class) :
                 this.restTemplate.exchange(requestUrl, httpMethod, request.getPayload(), response);
         log.info("response for {} = {}", url, responseEntity);
