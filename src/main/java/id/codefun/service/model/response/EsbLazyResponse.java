@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class EsbLazyResponse extends BaseResponse implements Serializable {
+public class EsbLazyResponse extends BaseResponse {
 
     private String body;
     private Integer httpStatus;
