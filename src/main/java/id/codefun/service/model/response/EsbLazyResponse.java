@@ -1,6 +1,5 @@
 package id.codefun.service.model.response;
 
-import java.io.Serializable;
 import id.codefun.common.model.response.BaseResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

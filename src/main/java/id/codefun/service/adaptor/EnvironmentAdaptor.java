@@ -5,6 +5,6 @@ import id.codefun.common.model.response.BaseResponse;
 
 public interface EnvironmentAdaptor <I extends BaseRequest, O extends BaseResponse> {
 
-    O execute(I request);
+    public O execute(I request);
 
 }
