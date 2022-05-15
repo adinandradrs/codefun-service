@@ -13,7 +13,7 @@
                 <repository>
                     <id>github</id>
                     <name>GitHub Code4Fun Apache Maven Packages</name>
-                    <url>https://maven.pkg.github.com/adinandradrs</url>
+                    <url>https://maven.pkg.github.com/adinandradrs/codefun-common</url>
                 </repository>
             </repositories>
         </profile>
