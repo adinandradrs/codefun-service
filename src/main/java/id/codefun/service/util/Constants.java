@@ -45,7 +45,7 @@ public class Constants {
         }
 
         public static USER_STATUS valueOf(int pageType) {
-            return (USER_STATUS) map.get(pageType);
+            return map.get(pageType);
         }
 
         public Integer getValue() {
@@ -77,7 +77,7 @@ public class Constants {
         }
 
         public static COMMON_STATUS valueOf(int pageType) {
-            return (COMMON_STATUS) map.get(pageType);
+            return map.get(pageType);
         }
 
         public Integer getValue() {
@@ -115,7 +115,7 @@ public class Constants {
         }
 
         public static FILE_UPLOAD_STATUS valueOf(int pageType) {
-            return (FILE_UPLOAD_STATUS) map.get(pageType);
+            return map.get(pageType);
         }
 
         public Integer getValue() {
