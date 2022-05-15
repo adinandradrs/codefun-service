@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class CacheUtility {
 
-    private RedisTemplate redisTemplate;
+    private RedisTemplate<String, Object> redisTemplate;
 
-    public CacheUtility(RedisTemplate redisTemplate){
+    public CacheUtility(RedisTemplate<String, Object> redisTemplate){
         this.redisTemplate = redisTemplate;
     }
 
@@ -41,7 +41,7 @@ public class CacheUtility {
         Object value = redisTemplate.opsForValue().get(pair);
         if(ObjectUtils.isEmpty(value)){
             return null;
-        }
+        } 
         return value.toString();
     }
     

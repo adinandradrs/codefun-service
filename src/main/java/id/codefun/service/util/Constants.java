@@ -3,7 +3,7 @@ package id.codefun.service.util;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CodefunConstants {
+public class Constants {
 
     public static final String DOCS_BODY_PAYLOAD = "Body payload";
 	public static final String DOCS_YOUR_REGISTERED_API_KEY = "Your registered API Key";
@@ -31,7 +31,7 @@ public class CodefunConstants {
 
         private Integer value;
         private String msg;
-        private static Map map = new HashMap<>();
+        private static Map<Integer, USER_STATUS> map = new HashMap<>();
 
         USER_STATUS(Integer value, String msg) {
             this.value = value;
@@ -63,7 +63,7 @@ public class CodefunConstants {
 
         private Integer value;
         private String msg;
-        private static Map map = new HashMap<>();
+        private static Map<Integer, COMMON_STATUS> map = new HashMap<>();
 
         COMMON_STATUS(Integer value, String msg) {
             this.value = value;
@@ -99,7 +99,7 @@ public class CodefunConstants {
 
         private final Integer value;
         private final String msg;
-        private static final Map map = new HashMap<>();
+        private static final Map<Integer, FILE_UPLOAD_STATUS>  map = new HashMap<>();
         private static final Map<Object, Object> options = new HashMap<>();
 
         FILE_UPLOAD_STATUS(Integer value, String msg) {

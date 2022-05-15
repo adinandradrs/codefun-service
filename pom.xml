@@ -6,7 +6,7 @@
 
     <groupId>id.codefun.service</groupId>
     <artifactId>codefun-service</artifactId>
-    <version>1.0</version>
+    <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>Codefun Service</name>
     <description>Codefun Service Library</description>

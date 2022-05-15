@@ -37,7 +37,7 @@ public abstract class RestAdaptor <I extends BaseRequest, O extends BaseResponse
         }
         log.info("requestUrl = {}", requestUrl);
         log.info("requestPayload = {}", JSON.toJSONString(request.getPayload()));
-        ResponseEntity responseEntity = (request.getIsPlain()) ?
+        ResponseEntity responseEntity = (request.isPlain()) ?
                 this.restTemplate.exchange(requestUrl, httpMethod, request.getPayload(), String.class) :
                 this.restTemplate.exchange(requestUrl, httpMethod, request.getPayload(), response);
         log.info("response for {} = {}", url, responseEntity);

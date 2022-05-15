@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class EsbRequest {
 
     private HttpEntity<?> payload;
-    private Boolean isPlain;
+    private boolean isPlain;
     private LinkedMultiValueMap<String, String> params;
 
 }
