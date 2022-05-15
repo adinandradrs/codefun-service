@@ -137,4 +137,12 @@
 			<version>${codefun-common.version}</version>
 		</dependency>
     </dependencies>
+
+	<distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Code4Fun Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/adinandradrs/codefun-service</url>
+        </repository>
+    </distributionManagement>
 </project>
